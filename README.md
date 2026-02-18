@@ -20,6 +20,11 @@ High-performance open-source .NET library for converting office documents to PDF
 dotnet add package DocumentToPdfConverter
 ```
 
+### Using the package
+
+1. Ensure **LibreOffice** is installed (or set `SOFFICE_PATH`).  
+2. Create a converter and call `ConvertAsync`:
+
 ### Quick start
 
 ```csharp
@@ -72,6 +77,8 @@ services.AddDocumentToPdfConverter(opt =>
 - **IsAvailableAsync()** – check if LibreOffice is available.
 - **GetLibreOfficeInfoAsync()** – get version and path of the detected installation.
 
+**Full usage guide:** [docs/USAGE.md](docs/USAGE.md) — all overloads, options, DI, error handling.  
+
 See [TROUBLESHOOTING](docs/TROUBLESHOOTING.md) for common issues and configuration tips.  
 [Install LibreOffice on Linux](docs/INSTALLATION-LINUX.md) (Ubuntu/Debian, RHEL, server group).  
 [Publish package to NuGet.org](docs/NUGET-PUBLISH.md).
@@ -91,6 +98,11 @@ See [TROUBLESHOOTING](docs/TROUBLESHOOTING.md) for common issues and configurati
 ```bash
 dotnet add package DocumentToPdfConverter
 ```
+
+### Использование пакета
+
+1. Убедитесь, что установлен **LibreOffice** (или задана переменная `SOFFICE_PATH`).  
+2. Создайте конвертер и вызовите `ConvertAsync`:
 
 ### Быстрый старт
 
@@ -143,6 +155,8 @@ services.AddDocumentToPdfConverter(opt =>
 - **ConvertAsync(ReadOnlyMemory&lt;byte&gt;, documentType, IBufferWriter&lt;byte&gt;)** — конвертация в памяти.
 - **IsAvailableAsync()** — проверка доступности LibreOffice.
 - **GetLibreOfficeInfoAsync()** — получение версии и пути к установленному LibreOffice.
+
+**Подробная инструкция по использованию:** [docs/USAGE.md](docs/USAGE.md) — все перегрузки, опции, DI, обработка ошибок.  
 
 Подробнее о типичных проблемах и настройке: [TROUBLESHOOTING](docs/TROUBLESHOOTING.md).  
 [Установка LibreOffice на Linux](docs/INSTALLATION-LINUX.md) (Ubuntu/Debian, RHEL, группа серверов).  
