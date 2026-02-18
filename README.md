@@ -73,7 +73,8 @@ services.AddDocumentToPdfConverter(opt =>
 - **GetLibreOfficeInfoAsync()** – get version and path of the detected installation.
 
 See [TROUBLESHOOTING](docs/TROUBLESHOOTING.md) for common issues and configuration tips.  
-[Install LibreOffice on Linux](docs/INSTALLATION-LINUX.md) (Ubuntu/Debian, RHEL, server group).
+[Install LibreOffice on Linux](docs/INSTALLATION-LINUX.md) (Ubuntu/Debian, RHEL, server group).  
+[Publish package to NuGet.org](docs/NUGET-PUBLISH.md).
 
 ---
 
@@ -144,4 +145,5 @@ services.AddDocumentToPdfConverter(opt =>
 - **GetLibreOfficeInfoAsync()** — получение версии и пути к установленному LibreOffice.
 
 Подробнее о типичных проблемах и настройке: [TROUBLESHOOTING](docs/TROUBLESHOOTING.md).  
-[Установка LibreOffice на Linux](docs/INSTALLATION-LINUX.md) (Ubuntu/Debian, RHEL, группа серверов).
+[Установка LibreOffice на Linux](docs/INSTALLATION-LINUX.md) (Ubuntu/Debian, RHEL, группа серверов).  
+[Публикация пакета в NuGet.org](docs/NUGET-PUBLISH.md).

@@ -1,0 +1,64 @@
+name: NuGet Pack and Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version (e.g. 1.0.0). Leave empty to use tag or csproj version.'
+        required: false
+      publish_to_nuget:
+        description: 'Publish to NuGet.org'
+        type: boolean
+        default: false
+
+jobs:
+  pack-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          else
+            echo "version=1.0.0" >> $GITHUB_OUTPUT
+          fi
+          echo "Version: ${{ steps.version.outputs.version }}"
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build DocumentToPdfConverter.sln -c Release --no-restore -p:Version=${{ steps.version.outputs.version }}
+
+      - name: Run unit tests
+        run: dotnet test tests/DocumentToPdfConverter.UnitTests/DocumentToPdfConverter.UnitTests.csproj -c Release --no-build --filter "Category!=Integration"
+
+      - name: Pack
+        run: |
+          mkdir -p out
+          dotnet pack src/DocumentToPdfConverter/DocumentToPdfConverter.csproj -c Release --no-build -o out -p:PackageVersion=${{ steps.version.outputs.version }} -p:Version=${{ steps.version.outputs.version }}
+
+      - name: Upload NuGet package
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-package
+          path: out/*.nupkg
+
+      - name: Publish to NuGet.org
+        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && github.event.inputs.publish_to_nuget == 'true')
+        run: dotnet nuget push out/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
