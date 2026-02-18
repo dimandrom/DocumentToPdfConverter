@@ -1,0 +1,14 @@
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.csproj.AssemblyReference.cache
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.AssemblyInfoInputs.cache
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.AssemblyInfo.cs
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.csproj.CoreCompileInputs.cache
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\bin\Debug\net8.0\DocumentToPdfConverter.deps.json
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\bin\Debug\net8.0\DocumentToPdfConverter.dll
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\bin\Debug\net8.0\DocumentToPdfConverter.pdb
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\bin\Debug\net8.0\DocumentToPdfConverter.xml
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.dll
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\refint\DocumentToPdfConverter.dll
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.xml
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\DocumentToPdfConverter.pdb
+C:\Users\Dmitry\Documents\Work\DocxPdfConverter\src\DocumentToPdfConverter\obj\Debug\net8.0\ref\DocumentToPdfConverter.dll

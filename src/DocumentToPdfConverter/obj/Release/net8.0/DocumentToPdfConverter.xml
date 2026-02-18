@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DocumentToPdfConverter</name>
+    </assembly>
+    <members>
+        <member name="T:DocumentToPdfConverter.ConversionOptions">
+            <summary>Options for document-to-PDF conversion.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionOptions.Timeout">
+            <summary>Override process timeout for this conversion. When null, default from converter options is used.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionOptions.Landscape">
+            <summary>Force landscape orientation when supported.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionOptions.PageRange">
+            <summary>Page range (e.g. "1-3,5") when supported by format.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionOptions.Quality">
+            <summary>PDF export quality.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.PdfExportQuality">
+            <summary>PDF export quality preset.</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.PdfExportQuality.Default">
+            <summary>Default balance of size and quality.</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.PdfExportQuality.High">
+            <summary>Higher quality, larger file.</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.PdfExportQuality.Compressed">
+            <summary>Smaller file, lower quality.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.ConversionResult">
+            <summary>Result of a single conversion operation.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionResult.Success">
+            <summary>Whether the conversion succeeded.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionResult.OutputPath">
+            <summary>Path to the output PDF file when conversion was file-based; otherwise null.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionResult.OutputSizeBytes">
+            <summary>Size of the output in bytes.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionResult.Duration">
+            <summary>Duration of the conversion.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.ConversionResult.ErrorMessage">
+            <summary>Error message when conversion failed.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.DocumentType">
+            <summary>Supported document type for conversion.</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Auto">
+            <summary>Auto-detect from file extension.</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Doc">
+            <summary>Microsoft Word 97-2003 (.doc).</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Docx">
+            <summary>Microsoft Word Open XML (.docx).</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Xls">
+            <summary>Microsoft Excel 97-2003 (.xls).</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Xlsx">
+            <summary>Microsoft Excel Open XML (.xlsx).</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Odt">
+            <summary>OpenDocument Text (.odt).</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Ods">
+            <summary>OpenDocument Spreadsheet (.ods).</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Ppt">
+            <summary>Microsoft PowerPoint 97-2003 (.ppt).</summary>
+        </member>
+        <member name="F:DocumentToPdfConverter.DocumentType.Pptx">
+            <summary>Microsoft PowerPoint Open XML (.pptx).</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.Exceptions.ConversionTimeoutException">
+            <summary>Thrown when conversion exceeds the allowed timeout.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.Exceptions.ConversionTimeoutException.InputFile">
+            <summary>Path to the input file that timed out.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.Exceptions.ConversionTimeoutException.Timeout">
+            <summary>Timeout that was exceeded.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.Exceptions.ConversionTimeoutException.#ctor(System.String,System.TimeSpan)">
+            <summary>Creates an exception with input path and timeout.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.Exceptions.DocumentConversionException">
+            <summary>Thrown when document conversion fails.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.Exceptions.DocumentConversionException.#ctor(System.String)">
+            <summary>Creates an exception with the given message.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.Exceptions.DocumentConversionException.#ctor(System.String,System.Exception)">
+            <summary>Creates an exception with the given message and inner exception.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.Exceptions.LibreOfficeNotFoundException">
+            <summary>Thrown when LibreOffice (soffice) is not found. Install LibreOffice or set SOFFICE_PATH.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.Exceptions.LibreOfficeNotFoundException.#ctor">
+            <summary>Creates an exception with a message that includes install hints.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.Exceptions.UnsupportedDocumentTypeException">
+            <summary>Thrown when the document type or file extension is not supported for conversion.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.Exceptions.UnsupportedDocumentTypeException.#ctor(System.String)">
+            <summary>Creates an exception with the given message.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.ServiceCollectionExtensions">
+            <summary>Extension methods for registering the document converter in DI.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.ServiceCollectionExtensions.AddDocumentToPdfConverter(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions})">
+            <summary>Adds DocumentToPdfConverter and LibreOffice health check to the service collection.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.IDocumentConverter">
+            <summary>Converts office documents (DOC, DOCX, XLS, XLSX, ODT, ODS, PPT, PPTX) to PDF.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.IDocumentConverter.ConvertAsync(System.String,System.String,DocumentToPdfConverter.ConversionOptions,System.Threading.CancellationToken)">
+            <summary>Converts a file at <paramref name="inputPath"/> to PDF at <paramref name="outputPath"/>.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.IDocumentConverter.ConvertAsync(System.IO.Stream,System.IO.Stream,DocumentToPdfConverter.DocumentType,DocumentToPdfConverter.ConversionOptions,System.Threading.CancellationToken)">
+            <summary>Converts <paramref name="input"/> stream to PDF written to <paramref name="output"/>.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.IDocumentConverter.ConvertAsync(System.ReadOnlyMemory{System.Byte},DocumentToPdfConverter.DocumentType,System.Buffers.IBufferWriter{System.Byte},DocumentToPdfConverter.ConversionOptions,System.Threading.CancellationToken)">
+            <summary>Converts <paramref name="inputData"/> to PDF written to <paramref name="output"/>.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.IDocumentConverter.IsAvailableAsync(System.Threading.CancellationToken)">
+            <summary>Returns whether LibreOffice is available for conversion.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.IDocumentConverter.GetLibreOfficeInfoAsync(System.Threading.CancellationToken)">
+            <summary>Returns version and path of the LibreOffice installation.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.Internal.ProcessRunner.RunAsync(System.String,System.String,System.String,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>Runs a process and returns exit code. Throws on timeout or cancellation.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeCommandBuilder.BuildConvertCommand(System.String,System.String,DocumentToPdfConverter.ConversionOptions,System.String)">
+            <summary>Builds the arguments string for soffice --headless --convert-to pdf.</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.LibreOffice.LibreOfficeConverter">
+            <summary>Converts documents to PDF using LibreOffice headless.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeConverter.ConvertAsync(System.String,System.String,DocumentToPdfConverter.ConversionOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeConverter.ConvertAsync(System.IO.Stream,System.IO.Stream,DocumentToPdfConverter.DocumentType,DocumentToPdfConverter.ConversionOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeConverter.ConvertAsync(System.ReadOnlyMemory{System.Byte},DocumentToPdfConverter.DocumentType,System.Buffers.IBufferWriter{System.Byte},DocumentToPdfConverter.ConversionOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeConverter.IsAvailableAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeConverter.GetLibreOfficeInfoAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeConverter.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions">
+            <summary>Options for LibreOffice-based conversion.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions.SofficePath">
+            <summary>Explicit path to soffice executable. When null, auto-detect is used.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions.ProcessTimeout">
+            <summary>Timeout for a single conversion process.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions.MaxConcurrency">
+            <summary>Maximum concurrent conversions (separate UserInstallation per slot).</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions.RestartAfterConversions">
+            <summary>Restart soffice after this many conversions to mitigate leaks.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions.TempDirectory">
+            <summary>Directory for temp files and profiles. When null, system temp is used.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions.CleanupTempFiles">
+            <summary>Whether to delete temp files after conversion.</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeConverterOptions.MaxQueueSize">
+            <summary>Maximum size of the conversion queue (bounded channel).</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeFinder.GetConfiguredPath">
+            <summary>Returns the configured path if set; otherwise null.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeFinder.Find">
+            <summary>Returns the path to use for soffice, or throws if not found.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeFinder.GetSearchPaths">
+            <summary>Returns candidate paths for discovery (for tests and diagnostics).</summary>
+        </member>
+        <member name="T:DocumentToPdfConverter.LibreOffice.LibreOfficeHealthCheck">
+            <summary>Health check that verifies LibreOffice is available.</summary>
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeHealthCheck.CheckHealthAsync(Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:DocumentToPdfConverter.LibreOffice.LibreOfficeInfo">
+            <summary>Information about the detected LibreOffice installation.</summary>
+            <param name="Version">Version string (e.g. from soffice --version).</param>
+            <param name="Path">Full path to the soffice executable.</param>
+        </member>
+        <member name="M:DocumentToPdfConverter.LibreOffice.LibreOfficeInfo.#ctor(System.String,System.String)">
+            <summary>Information about the detected LibreOffice installation.</summary>
+            <param name="Version">Version string (e.g. from soffice --version).</param>
+            <param name="Path">Full path to the soffice executable.</param>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeInfo.Version">
+            <summary>Version string (e.g. from soffice --version).</summary>
+        </member>
+        <member name="P:DocumentToPdfConverter.LibreOffice.LibreOfficeInfo.Path">
+            <summary>Full path to the soffice executable.</summary>
+        </member>
+    </members>
+</doc>
