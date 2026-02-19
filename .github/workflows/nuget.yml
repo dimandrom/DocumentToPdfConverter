@@ -48,6 +48,16 @@ jobs:
       - name: Run unit tests
         run: dotnet test tests/DocumentToPdfConverter.UnitTests/DocumentToPdfConverter.UnitTests.csproj -c Release --no-build --filter "Category!=Integration"
 
+      # Absolute doc links so README works on NuGet.org (relative links only work in repo)
+      - name: Rewrite README links for NuGet
+        run: |
+          if [ -n "${{ secrets.REPO_DOCS_BASE_URL }}" ]; then
+            BASE="${{ secrets.REPO_DOCS_BASE_URL }}"
+          else
+            BASE="https://github.com/${{ github.repository }}/blob/main"
+          fi
+          sed -i "s|](docs/|](${BASE}/docs/|g" README.md
+
       - name: Pack
         run: |
           mkdir -p out
