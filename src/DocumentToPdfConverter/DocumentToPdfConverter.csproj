@@ -9,6 +9,7 @@
     <Description>High-performance open-source NuGet package for converting DOC, DOCX, XLS, XLSX, ODT, ODS, PPT, PPTX to PDF using LibreOffice headless CLI. MIT license.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>Initial release. Converts DOC, DOCX, XLS, XLSX, ODT, ODS, PPT, PPTX to PDF via LibreOffice headless. File, stream, and in-memory conversion. Process pool with configurable concurrency. DI extension and health check. MS Office font mapping: Calibri→Carlito, Cambria→Caladea, Arial→Liberation Sans, Times New Roman→Liberation Serif (avoids DejaVu by default); disable with ApplyMsOfficeFontMapping = false. MIT license.</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/example/DocumentToPdfConverter</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IsPackable>true</IsPackable>

@@ -23,4 +23,7 @@ public sealed class LibreOfficeConverterOptions
 
     /// <summary>Maximum size of the conversion queue (bounded channel).</summary>
     public int MaxQueueSize { get; set; } = 100;
+
+    /// <summary>Apply MS Office → Liberation/Carlito/Caladea font mapping in the LibreOffice profile so PDF export does not use DejaVu by default. Set to false to use system defaults.</summary>
+    public bool ApplyMsOfficeFontMapping { get; set; } = true;
 }

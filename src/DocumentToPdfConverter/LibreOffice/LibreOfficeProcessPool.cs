@@ -74,6 +74,8 @@ internal sealed class LibreOfficeProcessPool : IAsyncDisposable
             var slotIndex = GetNextSlotIndex();
             var userInstallation = Path.Combine(_tempBase, slotIndex.ToString());
             Directory.CreateDirectory(userInstallation);
+            if (_options.ApplyMsOfficeFontMapping)
+                LibreOfficeProfileSetup.EnsureProfileWithFontMapping(userInstallation);
 
             var sofficePath = _finder.Find();
             var args = LibreOfficeCommandBuilder.BuildConvertCommand(

@@ -35,6 +35,10 @@
 
 - When using **AddDocumentToPdfConverter**, a health check named `"libreoffice"` is registered. Use `/health` (or your health URL) to verify that LibreOffice is available.
 
+### Fonts in PDF (DejaVu vs MS Office–like)
+
+By default LibreOffice substitutes missing fonts (e.g. Calibri, Cambria) with DejaVu, which can look larger or different. This package applies an **MS Office font mapping** in the LibreOffice profile: Calibri→Carlito, Cambria→Caladea, Arial→Liberation Sans, Times New Roman→Liberation Serif, etc., so PDFs are closer to the original layout. It is enabled by default (**ApplyMsOfficeFontMapping** = true in **LibreOfficeConverterOptions**). Set it to **false** to use LibreOffice’s default (e.g. DejaVu). For best results on Linux install metric-compatible fonts: `fonts-liberation`, `fonts-carlito`, `fonts-caladea` (or `liberation-fonts`, `ttf-carlito`, `ttf-caladea` depending on distro). See [INSTALLATION-LINUX](INSTALLATION-LINUX.md).
+
 ---
 
 ## Русский
@@ -69,3 +73,7 @@
 ### Проверка здоровья (health check)
 
 - При использовании **AddDocumentToPdfConverter** регистрируется проверка `"libreoffice"`. Эндпоинт `/health` (или ваш URL проверки) позволяет убедиться, что LibreOffice доступен.
+
+### Шрифты в PDF (DejaVu и подстановка под MS Office)
+
+По умолчанию LibreOffice подставляет отсутствующие шрифты (Calibri, Cambria и т.д.) шрифтом DejaVu, из‑за чего PDF может отличаться по виду. В этом пакете в профиле LibreOffice задаётся **маппинг шрифтов MS Office**: Calibri→Carlito, Cambria→Caladea, Arial→Liberation Sans, Times New Roman→Liberation Serif и др., чтобы PDF был ближе к оригиналу. Включено по умолчанию (**ApplyMsOfficeFontMapping** = true в **LibreOfficeConverterOptions**). Установите **false**, чтобы использовать подстановку по умолчанию (например DejaVu). Для лучшего результата на Linux установите метрически совместимые шрифты: `fonts-liberation`, `fonts-carlito`, `fonts-caladea` (или `liberation-fonts`, `ttf-carlito`, `ttf-caladea` в зависимости от дистрибутива). См. [INSTALLATION-LINUX](INSTALLATION-LINUX.md).

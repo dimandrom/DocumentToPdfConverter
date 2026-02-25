@@ -31,6 +31,12 @@ sudo apt install -y libreoffice-writer libreoffice-calc libreoffice-impress --no
 sudo apt install -y libreoffice
 ```
 
+**Шрифты для PDF, похожего на MS Office:** библиотека подставляет Calibri→Carlito, Cambria→Caladea и др. Чтобы подстановка работала корректно, установите метрически совместимые шрифты:
+
+```bash
+sudo apt install -y fonts-liberation fonts-carlito fonts-caladea
+```
+
 ### Несколько серверов Linux (группа серверов)
 
 На каждом сервере выполните те же команды. Для автоматизации можно использовать:
@@ -102,6 +108,12 @@ Full install (desktop or full suite):
 
 ```bash
 sudo apt install -y libreoffice
+```
+
+**Fonts for MS Office–like PDF output:** the library maps Calibri→Carlito, Cambria→Caladea, etc. Install metric-compatible fonts so substitution works as intended:
+
+```bash
+sudo apt install -y fonts-liberation fonts-carlito fonts-caladea
 ```
 
 ### Multiple Linux servers (server group)
