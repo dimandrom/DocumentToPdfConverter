@@ -10,7 +10,7 @@
 
 ```bash
 sudo apt update
-sudo apt install -y libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-core-nogui --no-install-recommends
+sudo apt install -y libreoffice-core-nogui --no-install-recommends
 ```
 
 Проверка:
