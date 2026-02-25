@@ -31,10 +31,10 @@ sudo apt install -y libreoffice-writer libreoffice-calc libreoffice-impress --no
 sudo apt install -y libreoffice
 ```
 
-**Шрифты для PDF, похожего на MS Office:** библиотека подставляет Calibri→Carlito, Cambria→Caladea и др. Чтобы подстановка работала корректно, установите метрически совместимые шрифты:
+**Шрифты для PDF, похожего на MS Office:** библиотека подставляет Calibri→Carlito, Cambria→Caladea и др. Чтобы подстановка работала корректно, установите метрически совместимые шрифты (в Debian/Ubuntu пакеты Carlito и Caladea называются `fonts-crosextra-carlito`, `fonts-crosextra-caladea`):
 
 ```bash
-sudo apt install -y fonts-liberation fonts-carlito fonts-caladea
+sudo apt install -y fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
 ```
 
 ### Несколько серверов Linux (группа серверов)
@@ -110,10 +110,10 @@ Full install (desktop or full suite):
 sudo apt install -y libreoffice
 ```
 
-**Fonts for MS Office–like PDF output:** the library maps Calibri→Carlito, Cambria→Caladea, etc. Install metric-compatible fonts so substitution works as intended:
+**Fonts for MS Office–like PDF output:** the library maps Calibri→Carlito, Cambria→Caladea, etc. Install metric-compatible fonts so substitution works as intended (on Debian/Ubuntu the Carlito and Caladea packages are `fonts-crosextra-carlito`, `fonts-crosextra-caladea`):
 
 ```bash
-sudo apt install -y fonts-liberation fonts-carlito fonts-caladea
+sudo apt install -y fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
 ```
 
 ### Multiple Linux servers (server group)
